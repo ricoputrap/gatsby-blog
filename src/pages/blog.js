@@ -3,24 +3,35 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 
 const BlogPage = ({ data }) => {
+  const posts = data.allMarkdownRemark.edges;
   return (
     <Layout pageTitle='My Blog Posts'>
-      <ul>
-        {data.allFile.nodes.map(post => (
-          <li key={post.name}>
-            { post.name }
-          </li>
-        ))}
-      </ul>
+      {posts.map(post => (
+        <div>
+          <h1>{ post.node.frontmatter.title }</h1>
+          <sub>{ post.node.frontmatter.date }</sub>
+          <sub>{ post.node.timeToRead } min</sub>
+          { post.node.html }
+        </div>
+      ))}
     </Layout>
   )
 }
 
 export const query = graphql`
   query {
-    allFile {
-      nodes {
-        name
+    allMarkdownRemark {
+      edges {
+        node {
+          id
+          html
+          frontmatter {
+            title
+            date
+          }
+          excerpt
+          timeToRead
+        }
       }
     }
   }
