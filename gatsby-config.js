@@ -14,15 +14,5 @@ module.exports = {
       }
     },
     "gatsby-transformer-remark",
-    // {
-    //   resolve: "gatsby-source-strapi",
-    //   options: {
-    //     apiURL: "http://localhost:1337",
-    //     collectionTypes: [
-    //       'blogs',
-    //     ],
-    //     queryLimit: 10,
-    //   }
-    // }
   ],
 };

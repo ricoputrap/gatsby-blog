@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Layout from '../components/layout';
 import { boxArticle, content } from "./blog.module.css";
 
@@ -10,7 +10,9 @@ const BlogPage = ({ data }) => {
       {posts.map(post => (
         <div key={post.node.id} className={boxArticle}>
           <h3>
-            { post.node.frontmatter.title }
+            <Link to={ post.node.frontmatter.slug }>
+              { post.node.frontmatter.title }
+            </Link>
           </h3>
           <div 
             className={content} 
